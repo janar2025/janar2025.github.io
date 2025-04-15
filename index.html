@@ -5,76 +5,180 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Бауржан Момышулы и «За нами Москва»</title>
   <style>
-    /* Эффектная темная тема с акцентами */
     body {
-      background: linear-gradient(135deg, #232526 0%, #414345 100%);
-      color: #f3f3f3;
-      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background: linear-gradient(120deg, #0a192f 0%, #112d4e 100%);
+      animation: bg-move 12s ease-in-out infinite alternate;
+      color: #e3eafc;
+    }
+    @keyframes bg-move {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
     .container {
       max-width: 900px;
-      margin: 40px auto 40px auto;
-      background: rgba(30, 32, 34, 0.98);
-      border-radius: 18px;
-      box-shadow: 0 8px 32px 0 rgba(34, 34, 64, 0.25);
-      padding: 40px 32px 32px 32px;
+      margin: 48px auto 48px auto;
+      background: rgba(15, 30, 60, 0.93);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(20, 40, 80, 0.35);
+      padding: 44px 36px 36px 36px;
+      border: 1.5px solid #274690;
+      position: relative;
+      overflow: hidden;
     }
     h1 {
-      color: #ffb300;
+      color: #5dade2;
       text-align: center;
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px #0008;
+      font-size: 2.7em;
+      margin-bottom: 0.3em;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 16px #0a192f88, 0 1px 0 #274690;
+      animation: fadeInDown 1.2s cubic-bezier(.77,0,.18,1) 0.1s both;
     }
     h2 {
-      color: #90caf9;
+      color: #7ed6df;
       margin-top: 2em;
       margin-bottom: 0.5em;
       font-size: 1.5em;
-      border-left: 4px solid #90caf9;
-      padding-left: 12px;
+      border-left: 4px solid #5dade2;
+      padding-left: 14px;
       letter-spacing: 0.5px;
+      animation: fadeInLeft 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
     }
     p {
       margin-bottom: 1.2em;
       font-size: 1.13em;
       text-align: justify;
       line-height: 1.7;
+      color: #e3eafc;
+      animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.5s both;
     }
     .images {
       display: flex;
       justify-content: center;
-      gap: 28px;
-      margin: 38px 0 18px 0;
+      gap: 32px;
+      margin: 40px 0 18px 0;
       flex-wrap: wrap;
+      animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.7s both;
     }
-    .images img {
+    .photo-frame {
+      background: linear-gradient(135deg, #274690 0%, #5dade2 100%);
+      padding: 18px 18px 38px 18px;
+      border-radius: 24px;
+      box-shadow: 0 4px 32px 0 #0a192f99, 0 1.5px 8px 0 #5dade255;
+      border: 3px solid #274690;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      min-width: 260px;
       max-width: 360px;
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px 0 #000a, 0 1.5px 8px 0 #ffb30055;
-      border: 2px solid #ffb30033;
-      transition: transform 0.2s, box-shadow 0.2s;
-      background: #222;
+      transition: box-shadow 0.3s, border-color 0.3s;
+      margin-bottom: 12px;
+      animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.8s both;
     }
-    .images img:hover {
-      transform: scale(1.04) rotate(-1deg);
-      box-shadow: 0 8px 32px 0 #ffb30099, 0 2px 12px 0 #90caf955;
-      border-color: #ffb300cc;
+    .photo-frame:hover {
+      box-shadow: 0 8px 40px 0 #5dade2cc, 0 2px 16px 0 #7ed6df99;
+      border-color: #5dade2cc;
+    }
+    .photo-frame img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #112d4e88;
+      border: 2.5px solid #e3eafc;
+      background: #112d4e;
+      filter: grayscale(10%) brightness(0.98);
+      transition: filter 0.3s, box-shadow 0.3s;
+      display: block;
+    }
+    .photo-frame:hover img {
+      filter: grayscale(0%) brightness(1.05);
+      box-shadow: 0 8px 32px #5dade2cc;
+    }
+    .copyright {
+      color: #e3eafc;
+      font-size: 1em;
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      padding: 0 8px;
+      text-shadow: 0 1px 4px #0a192f88;
+      user-select: none;
+      pointer-events: none;
+    }
+    /* Анимации появления */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    /* Декоративные синие круги */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+    .circle.c1 {
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, #5dade2 0%, #112d4e 80%);
+      top: -60px; left: -60px;
+      animation-delay: 0s;
+    }
+    .circle.c2 {
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, #7ed6df 0%, #0a192f 90%);
+      bottom: -40px; right: -40px;
+      animation-delay: 2s;
+    }
+    .circle.c3 {
+      width: 90px; height: 90px;
+      background: radial-gradient(circle, #274690 0%, #112d4e 100%);
+      top: 60%; left: -40px;
+      animation-delay: 4s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(30px) scale(1.08);}
     }
     @media (max-width: 800px) {
-      .container { padding: 18px 6vw 18px 6vw; }
+      .container { padding: 18px 4vw 18px 4vw; }
       .images { flex-direction: column; gap: 18px; }
-      .images img { max-width: 98vw; }
+      .photo-frame { max-width: 98vw; min-width: 0; }
+      .circle.c1 { width: 120px; height: 120px; top: -30px; left: -30px;}
+      .circle.c2 { width: 90px; height: 90px; bottom: -20px; right: -20px;}
+      .circle.c3 { width: 60px; height: 60px; top: 70%; left: -20px;}
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
     <h1>Бауржан Момышулы и «За нами Москва»</h1>
     <p>
       Великая Отечественная война (1941–1945) стала одним из самых трагических и героических периодов в истории Советского Союза. Она оставила глубокий след в мировой литературе, особенно в произведениях писателей-фронтовиков, которые передавали подлинную атмосферу боевых действий, трагедии и героизма солдат. Одним из таких писателей был Бауржан Момышулы – легендарный командир, участник обороны Москвы и автор книги «За нами Москва».
@@ -104,9 +208,16 @@
     </p>
 
     <div class="images">
-      <img src="1.jpg" alt="Бауржан Момышулы в годы войны" />
-      <img src="2.jpg" alt="Обложка книги «За нами Москва»" />
+      <div class="photo-frame">
+        <img src="1.jpg" alt="Бауржан Момышулы в годы войны" />
+        <div class="copyright">КГУ ОШ №21 города Костанай Copyright</div>
+      </div>
+      <div class="photo-frame">
+        <img src="2.jpg" alt="Обложка книги «За нами Москва»" />
+        <div class="copyright">КГУ ОШ №21 города Костанай Copyright</div>
+      </div>
     </div>
   </div>
 </body>
 </html>
+
